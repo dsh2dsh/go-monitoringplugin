@@ -3,7 +3,7 @@ package monitoringplugin_test
 import (
 	"fmt"
 
-	"github.com/inexio/go-monitoringplugin/v2"
+	"github.com/dsh2dsh/go-monitoringplugin/v2"
 )
 
 func Example_basicUsage() {

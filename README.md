@@ -1,8 +1,7 @@
 # go-monitoringplugin
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/inexio/go-monitoringplugin)](https://goreportcard.com/report/github.com/inexio/go-monitoringplugin)
-[![GitHub license](https://img.shields.io/badge/license-BSD-blue.svg)](https://github.com/inexio/go-monitoringplugin/blob/master/LICENSE)
-[![GoDoc doc](https://img.shields.io/badge/godoc-reference-blue)](https://godoc.org/github.com/inexio/go-monitoringplugin)
+[![Go](https://github.com/dsh2dsh/go-monitoringplugin/actions/workflows/go.yml/badge.svg)](https://github.com/dsh2dsh/go-monitoringplugin/actions/workflows/go.yml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/dsh2dsh/go-monitoringplugin.svg)](https://pkg.go.dev/github.com/dsh2dsh/go-monitoringplugin)
 
 ## Description
 

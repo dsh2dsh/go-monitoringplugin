@@ -1,4 +1,4 @@
-module github.com/inexio/go-monitoringplugin/v2
+module github.com/dsh2dsh/go-monitoringplugin/v2
 
 go 1.22
 
