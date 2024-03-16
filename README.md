@@ -11,6 +11,14 @@ Golang package for writing monitoring check plugins for
 
 The package complies with the [Monitoring Plugins Development Guidelines](https://www.monitoring-plugins.org/doc/guidelines.html).
 
+This project is a fork of
+[go-monitoringplugin](https://github.com/inexio/go-monitoringplugin).
+
+## Changes from [upstream](https://github.com/inexio/go-monitoringplugin):
+
+  * Use generics, instead of big.Float and big.ParseFloat. See
+    [#1](https://github.com/inexio/go-monitoringplugin/pull/1).
+
 ## Example / Usage
 
 ``` go
