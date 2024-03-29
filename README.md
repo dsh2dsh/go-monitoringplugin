@@ -1,7 +1,7 @@
 # go-monitoringplugin
 
 [![Go](https://github.com/dsh2dsh/go-monitoringplugin/actions/workflows/go.yml/badge.svg)](https://github.com/dsh2dsh/go-monitoringplugin/actions/workflows/go.yml)
-[![Go Reference](https://pkg.go.dev/badge/github.com/dsh2dsh/go-monitoringplugin.svg)](https://pkg.go.dev/github.com/dsh2dsh/go-monitoringplugin)
+[![Go Reference](https://pkg.go.dev/badge/github.com/dsh2dsh/go-monitoringplugin/v2.svg)](https://pkg.go.dev/github.com/dsh2dsh/go-monitoringplugin/v2)
 
 ## Description
 
