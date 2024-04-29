@@ -5,6 +5,7 @@ linters:
   enable:
     - asciicheck
     - bidichk
+    - copyloopvar
     - errorlint
     - gocritic
     # - gofmt # we are using gofumpt instead
