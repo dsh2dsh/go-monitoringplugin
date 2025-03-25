@@ -26,16 +26,16 @@ func TestPerformanceDataPointCreation(t *testing.T) {
 	p.SetLabel(label)
 	require.Equal(t, label, p.Label, "SetLabel failed")
 
-	const min = float64(0)
-	p.SetMin(min)
+	const minVal = float64(0)
+	p.SetMin(minVal)
 	//nolint:testifylint // float-compare safe here
-	require.Equal(t, min, p.Min, "SetMin failed")
+	require.Equal(t, minVal, p.Min, "SetMin failed")
 	require.True(t, p.hasMin, "SetMin failed")
 
-	const max = float64(100)
-	p.SetMax(max)
+	const maxVal = float64(100)
+	p.SetMax(maxVal)
 	//nolint:testifylint // float-compare safe here
-	require.Equal(t, max, p.Max, "SetMax failed")
+	require.Equal(t, maxVal, p.Max, "SetMax failed")
 	require.True(t, p.hasMax, "SetMax failed")
 
 	assert.False(t, p.HasThresholds())
@@ -105,8 +105,8 @@ func TestPerformanceDataPoint_output(t *testing.T) {
 	const unit = "s"
 	const warn = float64(40.0)
 	const crit = float64(50.0)
-	const min = float64(0.0)
-	const max = float64(60.0)
+	const minVal = float64(0.0)
+	const maxVal = float64(60.0)
 
 	p := NewPerformanceDataPoint(label, value)
 	regex := fmt.Sprintf("'%s'=%g", label, value)
@@ -118,56 +118,56 @@ func TestPerformanceDataPoint_output(t *testing.T) {
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
-	p.SetMax(max)
-	regex = fmt.Sprintf("'%s'=%g%s;;;;%g", label, value, unit, max)
+	p.SetMax(maxVal)
+	regex = fmt.Sprintf("'%s'=%g%s;;;;%g", label, value, unit, maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
 	p.NewThresholds(0, warn, 0, crit).
 		UseWarning(false, true).UseCritical(false, true)
 	regex = fmt.Sprintf("'%s'=%g%s;~:%g;~:%g;;%g", label, value, unit, warn, crit,
-		max)
+		maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
 	p.NewThresholds(0, 0, -10, 0).
 		UseWarning(true, false).UseCritical(true, false)
-	regex = fmt.Sprintf("'%s'=%g%s;%d:;%d:;;%g", label, value, unit, 0, -10, max)
+	regex = fmt.Sprintf("'%s'=%g%s;%d:;%d:;;%g", label, value, unit, 0, -10, maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
 	p.NewThresholds(5, 10, 3, 11)
 	regex = fmt.Sprintf("'%s'=%g%s;%d:%d;%d:%d;;%g", label, value, unit, 5, 10, 3,
-		11, max)
+		11, maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
 	p.NewThresholds(0, warn, 0, crit)
 	regex = fmt.Sprintf("'%s'=%g%s;%g;%g;;%g", label, value, unit, warn, crit,
-		max)
+		maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
-	p.SetMin(min)
+	p.SetMin(minVal)
 	regex = fmt.Sprintf("'%s'=%g%s;%g;%g;%g;%g", label, value, unit, warn, crit,
-		min, max)
+		minVal, maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 
 	regex = fmt.Sprintf(`'{"metric":"%s"}'=%g%s;%g;%g;%g;%g`, label, value, unit,
-		warn, crit, min, max)
+		warn, crit, minVal, maxVal)
 	require.Contains(t, string(p.output(true)), regex,
 		"output string did not match regex")
 
 	tag := "tag"
 	p.SetLabel(tag)
 	regex = fmt.Sprintf(`'{"metric":"%s","label":"%s"}'=%g%s;%g;%g;%g;%g`,
-		label, tag, value, unit, warn, crit, min, max)
+		label, tag, value, unit, warn, crit, minVal, maxVal)
 	require.Contains(t, string(p.output(true)), regex,
 		"output string did not match regex")
 
 	regex = fmt.Sprintf(`'%s_%s'=%g%s;%g;%g;%g;%g`, label, tag, value, unit, warn,
-		crit, min, max)
+		crit, minVal, maxVal)
 	require.Contains(t, string(p.output(false)), regex,
 		"output string did not match regex")
 }

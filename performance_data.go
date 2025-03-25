@@ -170,14 +170,14 @@ func (p *PerformanceDataPoint[T]) SetUnit(unit string) *PerformanceDataPoint[T] 
 }
 
 // SetMin sets minimum value.
-func (p *PerformanceDataPoint[T]) SetMin(min T) *PerformanceDataPoint[T] {
-	p.Min, p.hasMin = min, true
+func (p *PerformanceDataPoint[T]) SetMin(val T) *PerformanceDataPoint[T] {
+	p.Min, p.hasMin = val, true
 	return p
 }
 
 // SetMax sets maximum value.
-func (p *PerformanceDataPoint[T]) SetMax(max T) *PerformanceDataPoint[T] {
-	p.Max, p.hasMax = max, true
+func (p *PerformanceDataPoint[T]) SetMax(val T) *PerformanceDataPoint[T] {
+	p.Max, p.hasMax = val, true
 	return p
 }
 

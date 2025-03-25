@@ -106,14 +106,14 @@ func (c *Thresholds[T]) getCritical() string {
 	return getRange(c.CriticalMin, c.CriticalMax, c.hasCritMin, c.hasCritMax)
 }
 
-func getRange[T cmp.Ordered](min, max T, hasMin, hasMax bool) string {
+func getRange[T cmp.Ordered](minVal, maxVal T, hasMin, hasMax bool) string {
 	if !hasMin && !hasMax {
 		return ""
 	}
 
 	var b strings.Builder
 	if hasMin {
-		minString := fmt.Sprint(min)
+		minString := fmt.Sprint(minVal)
 		if minString != "0" || !hasMax {
 			b.WriteString(minString)
 			b.WriteString(":")
@@ -123,7 +123,7 @@ func getRange[T cmp.Ordered](min, max T, hasMin, hasMax bool) string {
 	}
 
 	if hasMax {
-		b.WriteString(fmt.Sprint(max))
+		b.WriteString(fmt.Sprint(maxVal))
 	}
 	return b.String()
 }

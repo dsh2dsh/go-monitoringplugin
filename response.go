@@ -447,12 +447,12 @@ func String2StatusCode(s string) int {
 
 // StatusCode2Text is used to map the status code to a string.
 func StatusCode2Text(statusCode int) string {
-	switch {
-	case statusCode == OK:
+	switch statusCode {
+	case OK:
 		return "OK"
-	case statusCode == WARNING:
+	case WARNING:
 		return "WARNING"
-	case statusCode == CRITICAL:
+	case CRITICAL:
 		return "CRITICAL"
 	default:
 		return "UNKNOWN"
