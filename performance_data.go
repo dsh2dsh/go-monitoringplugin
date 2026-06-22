@@ -217,7 +217,7 @@ func (p *PerformanceDataPoint[T]) output(jsonLabel bool) []byte {
 	}
 	buffer.WriteByte('=')
 
-	buffer.WriteString(fmt.Sprint(p.Value))
+	fmt.Fprint(&buffer, p.Value)
 	buffer.WriteString(p.Unit)
 
 	if p.HasThresholds() || p.hasMax || p.hasMin {
@@ -231,11 +231,11 @@ func (p *PerformanceDataPoint[T]) output(jsonLabel bool) []byte {
 		}
 		buffer.WriteByte(';')
 		if p.hasMin {
-			buffer.WriteString(fmt.Sprint(p.Min))
+			fmt.Fprint(&buffer, p.Min)
 		}
 		buffer.WriteByte(';')
 		if p.hasMax {
-			buffer.WriteString(fmt.Sprint(p.Max))
+			fmt.Fprint(&buffer, p.Max)
 		}
 	}
 	return buffer.Bytes()

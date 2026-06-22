@@ -123,7 +123,7 @@ func getRange[T cmp.Ordered](minVal, maxVal T, hasMin, hasMax bool) string {
 	}
 
 	if hasMax {
-		b.WriteString(fmt.Sprint(maxVal))
+		fmt.Fprint(&b, maxVal)
 	}
 	return b.String()
 }
